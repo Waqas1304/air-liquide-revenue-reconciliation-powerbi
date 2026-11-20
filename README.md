@@ -81,4 +81,4 @@ Full list with URLs: [`data/raw/sources.csv`](data/raw/sources.csv). Detailed wr
 - The figures were transcribed manually from the PDFs. Two items are marked *to verify* in the raw file (the Q3 2026 Healthcare comparable %, and the "Europe" label in the Q3 2026 year-to-date table).
 - This is an independent portfolio project, not affiliated with or endorsed by Air Liquide.
 
-*Author: Waqas Saleem, Environmental & Energy Engineer | Data & BI ([GitHub](https://github.com/waqassaleem1304))*
+*Author: Waqas Saleem, Environmental & Energy Engineer ([GitHub](https://github.com/waqassaleem1304))*
