@@ -1,0 +1,11 @@
+segment_key,segment,segment_type,parent_segment,sort_order
+SEG01,Group,Group,,1
+SEG02,Gas & Services,Activity,Group,2
+SEG03,Engineering & Technologies,Activity,Group,3
+SEG04,Americas,Region,Gas & Services,4
+SEG05,EMEA,Region,Gas & Services,5
+SEG06,Asia Pacific,Region,Gas & Services,6
+SEG07,Large Industries,Business line,Gas & Services,7
+SEG08,Industrial Merchant,Business line,Gas & Services,8
+SEG09,Healthcare,Business line,Gas & Services,9
+SEG10,Electronics,Business line,Gas & Services,10

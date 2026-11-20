@@ -1,0 +1,104 @@
+// DAX measures used in the AirLiquide_Revenue_Cockpit semantic model
+
+// ===== table: fact_revenue =====
+Revenue (EUR m) =
+    CALCULATE ( SUM ( fact_revenue[revenue_eur_m] ), fact_revenue[is_reference] = 1 )
+
+Revenue PY (EUR m) =
+    VAR _year = SELECTEDVALUE ( dim_period[year] )
+    VAR _code = SELECTEDVALUE ( dim_period[period_code] )
+    RETURN
+        CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_period ), dim_period[year] = _year - 1, dim_period[period_code] = _code )
+
+Published Growth % (recalc) =
+    DIVIDE ( [Revenue (EUR m)] - [Revenue PY (EUR m)], [Revenue PY (EUR m)] )
+
+Published Growth % (as reported) =
+    DIVIDE ( CALCULATE ( MAX ( fact_revenue[published_change_pct] ), fact_revenue[role] = "Reported period" ), 100 )
+
+Comparable Growth % (as reported) =
+    DIVIDE ( CALCULATE ( MAX ( fact_revenue[comparable_change_pct] ), fact_revenue[role] = "Reported period" ), 100 )
+
+G&S Total (EUR m) =
+    CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_segment ), dim_segment[segment] = "Gas & Services" )
+
+Sum of Regions (EUR m) =
+    CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_segment ), dim_segment[segment_type] = "Region" )
+
+Sum of Business Lines (EUR m) =
+    CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_segment ), dim_segment[segment_type] = "Business line" )
+
+Regions Check Diff (EUR m) =
+    [Sum of Regions (EUR m)] - [G&S Total (EUR m)]
+
+Business Lines Check Diff (EUR m) =
+    [Sum of Business Lines (EUR m)] - [G&S Total (EUR m)]
+
+Share of G&S % =
+    DIVIDE ( [Revenue (EUR m)], [G&S Total (EUR m)] )
+
+Publications Count =
+    DISTINCTCOUNT ( fact_revenue[source_id] )
+
+Restatement Spread (EUR m) =
+    SUMX (
+        SUMMARIZE ( fact_revenue, fact_revenue[period_key], fact_revenue[segment_key] ),
+        CALCULATE ( MAX ( fact_revenue[revenue_eur_m] ) - MIN ( fact_revenue[revenue_eur_m] ) )
+    )
+
+Reconciliation Status =
+    VAR _d = MAX ( ABS ( [Regions Check Diff (EUR m)] ), ABS ( [Business Lines Check Diff (EUR m)] ) )
+    RETURN
+        SWITCH ( TRUE (), ISBLANK ( [G&S Total (EUR m)] ), BLANK (), _d = 0, "OK", _d <= 2, "Rounding", "Break" )
+
+// ===== table: fact_bridge =====
+Bridge Amount (EUR m) =
+    SUM ( fact_bridge[amount_eur_m] )
+
+Bridge Prior-year Revenue (EUR m) =
+    CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = "Prior-year revenue" )
+
+Bridge Current Revenue (EUR m) =
+    [Bridge Amount (EUR m)]
+
+Currency Impact (EUR m) =
+    CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = "Currency" )
+
+Energy Impact (EUR m) =
+    CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] IN { "Natural gas", "Electricity" } )
+
+Scope Impact (EUR m) =
+    CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = "Significant scope" )
+
+Comparable Growth (EUR m) =
+    CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = "Comparable growth" )
+
+Comparable Growth % (recalc) =
+    DIVIDE ( [Comparable Growth (EUR m)], [Bridge Prior-year Revenue (EUR m)] )
+
+Comparable Gap vs Reported (pts) =
+    ( [Comparable Growth % (recalc)] - [Comparable Growth % (as reported)] ) * 100
+
+// ===== table: fact_checks =====
+Checks Total =
+    COUNTROWS ( fact_checks )
+
+Checks OK =
+    CALCULATE ( COUNTROWS ( fact_checks ), fact_checks[status] = "OK" )
+
+Checks Rounding =
+    CALCULATE ( COUNTROWS ( fact_checks ), fact_checks[status] = "Rounding" )
+
+Checks Break =
+    CALCULATE ( COUNTROWS ( fact_checks ), fact_checks[status] IN { "Break", "Investigate" } )
+
+Check Pass Rate % =
+    DIVIDE ( [Checks OK] + [Checks Rounding], [Checks Total] )
+
+Max Abs Difference =
+    MAXX ( fact_checks, ABS ( fact_checks[difference] ) )
+
+// ===== RLS roles (Modeling > Manage roles) =====
+// Regional Controller - Americas: dim_segment -> dim_segment[segment] = "Americas" ; fact_checks -> fact_checks[scope] = "Americas"
+// Regional Controller - EMEA: dim_segment -> dim_segment[segment] = "EMEA" ; fact_checks -> fact_checks[scope] = "EMEA"
+// Regional Controller - Asia Pacific: dim_segment -> dim_segment[segment] = "Asia Pacific" ; fact_checks -> fact_checks[scope] = "Asia Pacific"

@@ -1,0 +1,107 @@
+period_key,segment_key,driver,amount_eur_m,is_derived,source_id,note,step_order
+2025-FY,SEG01,Prior-year revenue,27059.0,1,S4,Sum of 2024 quarters,1
+2025-FY,SEG01,Currency,-887.0,0,S4,,2
+2025-FY,SEG01,Natural gas,194.0,0,S4,,3
+2025-FY,SEG01,Electricity,41.0,0,S4,,4
+2025-FY,SEG01,Significant scope,-4.0,0,S4,,5
+2025-FY,SEG01,Internal transfer,0.0,0,S4,,6
+2025-FY,SEG01,Comparable growth,537.0,1,S4,Residual: current - prior-year - drivers,7
+2025-FY,SEG02,Prior-year revenue,25810.0,0,S4,,1
+2025-FY,SEG02,Currency,-872.0,0,S4,,2
+2025-FY,SEG02,Natural gas,194.0,0,S4,,3
+2025-FY,SEG02,Electricity,41.0,0,S4,,4
+2025-FY,SEG02,Significant scope,-4.0,0,S4,,5
+2025-FY,SEG02,Internal transfer,396.0,0,S4,,6
+2025-FY,SEG02,Comparable growth,520.0,1,S4,Residual: current - prior-year - drivers,7
+2025-Q1,SEG01,Prior-year revenue,6650.0,0,S1,,1
+2025-Q1,SEG01,Currency,48.0,0,S1,,2
+2025-Q1,SEG01,Natural gas,162.0,0,S1,,3
+2025-Q1,SEG01,Electricity,58.0,0,S1,,4
+2025-Q1,SEG01,Significant scope,0.0,0,S1,,5
+2025-Q1,SEG01,Internal transfer,0.0,0,S1,GM&T transfer is neutral at Group level,6
+2025-Q1,SEG01,Comparable growth,110.0,1,S1,Residual: current - prior-year - drivers,7
+2025-Q1,SEG02,Prior-year revenue,6358.0,0,S1,,1
+2025-Q1,SEG02,Currency,46.0,0,S1,,2
+2025-Q1,SEG02,Natural gas,162.0,0,S1,,3
+2025-Q1,SEG02,Electricity,58.0,0,S1,,4
+2025-Q1,SEG02,Significant scope,0.0,0,S1,,5
+2025-Q1,SEG02,Internal transfer,91.0,0,S1,Maritime and Biogas moved from GM&T to Industrial Merchant,6
+2025-Q1,SEG02,Comparable growth,116.0,1,S1,Residual: current - prior-year - drivers,7
+2025-Q2,SEG01,Prior-year revenue,6729.0,0,S2,,1
+2025-Q2,SEG01,Currency,-247.0,0,S2,,2
+2025-Q2,SEG01,Natural gas,76.0,0,S2,,3
+2025-Q2,SEG01,Electricity,9.0,0,S2,,4
+2025-Q2,SEG01,Significant scope,0.0,0,S2,,5
+2025-Q2,SEG01,Internal transfer,0.0,0,S2,,6
+2025-Q2,SEG01,Comparable growth,127.0,1,S2,Residual: current - prior-year - drivers,7
+2025-Q2,SEG02,Prior-year revenue,6438.0,0,S2,,1
+2025-Q2,SEG02,Currency,-243.0,0,S2,,2
+2025-Q2,SEG02,Natural gas,76.0,0,S2,,3
+2025-Q2,SEG02,Electricity,9.0,0,S2,,4
+2025-Q2,SEG02,Significant scope,0.0,0,S2,,5
+2025-Q2,SEG02,Internal transfer,85.0,0,S2,,6
+2025-Q2,SEG02,Comparable growth,114.0,1,S2,Residual: current - prior-year - drivers,7
+2025-Q3,SEG01,Prior-year revenue,6762.0,0,S3,,1
+2025-Q3,SEG01,Currency,-286.0,0,S3,,2
+2025-Q3,SEG01,Natural gas,3.0,0,S3,,3
+2025-Q3,SEG01,Electricity,-7.0,0,S3,,4
+2025-Q3,SEG01,Significant scope,0.0,0,S3,,5
+2025-Q3,SEG01,Internal transfer,0.0,0,S3,,6
+2025-Q3,SEG01,Comparable growth,127.0,1,S3,Residual: current - prior-year - drivers,7
+2025-Q3,SEG02,Prior-year revenue,6445.0,0,S3,,1
+2025-Q3,SEG02,Currency,-281.0,0,S3,,2
+2025-Q3,SEG02,Natural gas,3.0,0,S3,,3
+2025-Q3,SEG02,Electricity,-7.0,0,S3,,4
+2025-Q3,SEG02,Significant scope,0.0,0,S3,,5
+2025-Q3,SEG02,Internal transfer,102.0,0,S3,,6
+2025-Q3,SEG02,Comparable growth,124.0,1,S3,Residual: current - prior-year - drivers,7
+2025-Q4,SEG01,Prior-year revenue,6918.0,0,S4,,1
+2025-Q4,SEG01,Currency,-402.0,0,S4,,2
+2025-Q4,SEG01,Natural gas,-46.0,0,S4,,3
+2025-Q4,SEG01,Electricity,-19.0,0,S4,,4
+2025-Q4,SEG01,Significant scope,-4.0,0,S4,,5
+2025-Q4,SEG01,Internal transfer,0.0,0,S4,,6
+2025-Q4,SEG01,Comparable growth,172.0,1,S4,Residual: current - prior-year - drivers,7
+2025-Q4,SEG02,Prior-year revenue,6569.0,0,S4,,1
+2025-Q4,SEG02,Currency,-394.0,0,S4,,2
+2025-Q4,SEG02,Natural gas,-46.0,0,S4,,3
+2025-Q4,SEG02,Electricity,-19.0,0,S4,,4
+2025-Q4,SEG02,Significant scope,-4.0,0,S4,,5
+2025-Q4,SEG02,Internal transfer,118.0,1,S4,Derived: FY 2025 (396) minus Q1-Q3 2025 (278),6
+2025-Q4,SEG02,Comparable growth,165.0,1,S4,Residual: current - prior-year - drivers,7
+2026-Q1,SEG01,Prior-year revenue,7028.0,0,S5,,1
+2026-Q1,SEG01,Currency,-411.0,0,S5,,2
+2026-Q1,SEG01,Natural gas,-57.0,0,S5,,3
+2026-Q1,SEG01,Electricity,-15.0,0,S5,,4
+2026-Q1,SEG01,Significant scope,109.0,0,S5,Mainly DIG Airgas acquisition (13 Jan 2026),5
+2026-Q1,SEG01,Comparable growth,132.0,1,S5,Residual: current - prior-year - drivers,7
+2026-Q1,SEG02,Prior-year revenue,6831.0,0,S5,,1
+2026-Q1,SEG02,Currency,-403.0,0,S5,,2
+2026-Q1,SEG02,Natural gas,-57.0,0,S5,,3
+2026-Q1,SEG02,Electricity,-15.0,0,S5,,4
+2026-Q1,SEG02,Significant scope,109.0,0,S5,Mainly DIG Airgas acquisition (13 Jan 2026),5
+2026-Q1,SEG02,Comparable growth,130.0,1,S5,Residual: current - prior-year - drivers,7
+2026-Q2,SEG01,Prior-year revenue,6694.0,0,S6,,1
+2026-Q2,SEG01,Currency,-85.0,0,S6,,2
+2026-Q2,SEG01,Natural gas,52.0,0,S6,,3
+2026-Q2,SEG01,Electricity,35.0,0,S6,,4
+2026-Q2,SEG01,Significant scope,116.0,0,S6,,5
+2026-Q2,SEG01,Comparable growth,230.0,1,S6,Residual: current - prior-year - drivers,7
+2026-Q2,SEG02,Prior-year revenue,6479.0,0,S6,,1
+2026-Q2,SEG02,Currency,-82.0,0,S6,,2
+2026-Q2,SEG02,Natural gas,52.0,0,S6,,3
+2026-Q2,SEG02,Electricity,35.0,0,S6,,4
+2026-Q2,SEG02,Significant scope,116.0,0,S6,,5
+2026-Q2,SEG02,Comparable growth,212.0,1,S6,Residual: current - prior-year - drivers,7
+2026-Q3,SEG01,Prior-year revenue,6599.0,0,S7,,1
+2026-Q3,SEG01,Currency,97.0,0,S7,,2
+2026-Q3,SEG01,Natural gas,196.0,0,S7,,3
+2026-Q3,SEG01,Electricity,80.0,0,S7,,4
+2026-Q3,SEG01,Significant scope,87.0,0,S7,DIG Airgas acquisition net of Biogas divestiture,5
+2026-Q3,SEG01,Comparable growth,200.0,1,S7,Residual: current - prior-year - drivers,7
+2026-Q3,SEG02,Prior-year revenue,6386.0,0,S7,,1
+2026-Q3,SEG02,Currency,95.0,0,S7,,2
+2026-Q3,SEG02,Natural gas,196.0,0,S7,,3
+2026-Q3,SEG02,Electricity,80.0,0,S7,,4
+2026-Q3,SEG02,Significant scope,87.0,0,S7,DIG Airgas acquisition net of Biogas divestiture,5
+2026-Q3,SEG02,Comparable growth,231.0,1,S7,Residual: current - prior-year - drivers,7

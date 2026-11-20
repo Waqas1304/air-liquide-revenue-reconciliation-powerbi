@@ -1,0 +1,753 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "dim_period",
+        "columns": [
+          {
+            "name": "period_key",
+            "dataType": "string",
+            "sourceColumn": "period_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "period",
+            "dataType": "string",
+            "sourceColumn": "period",
+            "summarizeBy": "none",
+            "sortByColumn": "sort_order"
+          },
+          {
+            "name": "period_code",
+            "dataType": "string",
+            "sourceColumn": "period_code",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "period_type",
+            "dataType": "string",
+            "sourceColumn": "period_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter_num",
+            "dataType": "int64",
+            "sourceColumn": "quarter_num",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "period_end_date",
+            "dataType": "dateTime",
+            "sourceColumn": "period_end_date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "sort_order",
+            "dataType": "int64",
+            "sourceColumn": "sort_order",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_period",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"dim_period.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"period_key\", type text}, {\"period\", type text}, {\"period_code\", type text}, {\"year\", Int64.Type}, {\"period_type\", type text}, {\"quarter_num\", Int64.Type}, {\"period_end_date\", type date}, {\"sort_order\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_segment",
+        "columns": [
+          {
+            "name": "segment_key",
+            "dataType": "string",
+            "sourceColumn": "segment_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "segment",
+            "dataType": "string",
+            "sourceColumn": "segment",
+            "summarizeBy": "none",
+            "sortByColumn": "sort_order"
+          },
+          {
+            "name": "segment_type",
+            "dataType": "string",
+            "sourceColumn": "segment_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "parent_segment",
+            "dataType": "string",
+            "sourceColumn": "parent_segment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sort_order",
+            "dataType": "int64",
+            "sourceColumn": "sort_order",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_segment",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"dim_segment.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"segment_key\", type text}, {\"segment\", type text}, {\"segment_type\", type text}, {\"parent_segment\", type text}, {\"sort_order\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_source",
+        "columns": [
+          {
+            "name": "source_id",
+            "dataType": "string",
+            "sourceColumn": "source_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_document",
+            "dataType": "string",
+            "sourceColumn": "source_document",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "publication_date",
+            "dataType": "dateTime",
+            "sourceColumn": "publication_date",
+            "summarizeBy": "none",
+            "formatString": "yyyy-mm-dd"
+          },
+          {
+            "name": "url",
+            "dataType": "string",
+            "sourceColumn": "url",
+            "summarizeBy": "none",
+            "dataCategory": "WebUrl"
+          },
+          {
+            "name": "official_page",
+            "dataType": "string",
+            "sourceColumn": "official_page",
+            "summarizeBy": "none",
+            "dataCategory": "WebUrl"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_source",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"dim_source.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"source_id\", type text}, {\"source_document\", type text}, {\"publication_date\", type date}, {\"url\", type text}, {\"official_page\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fact_revenue",
+        "columns": [
+          {
+            "name": "row_id",
+            "dataType": "int64",
+            "sourceColumn": "row_id",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "source_id",
+            "dataType": "string",
+            "sourceColumn": "source_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "period_key",
+            "dataType": "string",
+            "sourceColumn": "period_key",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "segment_key",
+            "dataType": "string",
+            "sourceColumn": "segment_key",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "role",
+            "dataType": "string",
+            "sourceColumn": "role",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "revenue_eur_m",
+            "dataType": "double",
+            "sourceColumn": "revenue_eur_m",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "published_change_pct",
+            "dataType": "double",
+            "sourceColumn": "published_change_pct",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "comparable_change_pct",
+            "dataType": "double",
+            "sourceColumn": "comparable_change_pct",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_reference",
+            "dataType": "int64",
+            "sourceColumn": "is_reference",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "note",
+            "dataType": "string",
+            "sourceColumn": "note",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_revenue",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"fact_revenue.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"row_id\", Int64.Type}, {\"source_id\", type text}, {\"period_key\", type text}, {\"segment_key\", type text}, {\"role\", type text}, {\"revenue_eur_m\", type number}, {\"published_change_pct\", type number}, {\"comparable_change_pct\", type number}, {\"is_reference\", Int64.Type}, {\"note\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Revenue (EUR m)",
+            "expression": [
+              "CALCULATE ( SUM ( fact_revenue[revenue_eur_m] ), fact_revenue[is_reference] = 1 )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Revenue PY (EUR m)",
+            "expression": [
+              "VAR _year = SELECTEDVALUE ( dim_period[year] )",
+              "VAR _code = SELECTEDVALUE ( dim_period[period_code] )",
+              "RETURN",
+              "    CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_period ), dim_period[year] = _year - 1, dim_period[period_code] = _code )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Published Growth % (recalc)",
+            "expression": [
+              "DIVIDE ( [Revenue (EUR m)] - [Revenue PY (EUR m)], [Revenue PY (EUR m)] )"
+            ],
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Published Growth % (as reported)",
+            "expression": [
+              "DIVIDE ( CALCULATE ( MAX ( fact_revenue[published_change_pct] ), fact_revenue[role] = \"Reported period\" ), 100 )"
+            ],
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Comparable Growth % (as reported)",
+            "expression": [
+              "DIVIDE ( CALCULATE ( MAX ( fact_revenue[comparable_change_pct] ), fact_revenue[role] = \"Reported period\" ), 100 )"
+            ],
+            "formatString": "0.0%"
+          },
+          {
+            "name": "G&S Total (EUR m)",
+            "expression": [
+              "CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_segment ), dim_segment[segment] = \"Gas & Services\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Sum of Regions (EUR m)",
+            "expression": [
+              "CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_segment ), dim_segment[segment_type] = \"Region\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Sum of Business Lines (EUR m)",
+            "expression": [
+              "CALCULATE ( [Revenue (EUR m)], REMOVEFILTERS ( dim_segment ), dim_segment[segment_type] = \"Business line\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Regions Check Diff (EUR m)",
+            "expression": [
+              "[Sum of Regions (EUR m)] - [G&S Total (EUR m)]"
+            ],
+            "formatString": "#,0;-#,0;0"
+          },
+          {
+            "name": "Business Lines Check Diff (EUR m)",
+            "expression": [
+              "[Sum of Business Lines (EUR m)] - [G&S Total (EUR m)]"
+            ],
+            "formatString": "#,0;-#,0;0"
+          },
+          {
+            "name": "Share of G&S %",
+            "expression": [
+              "DIVIDE ( [Revenue (EUR m)], [G&S Total (EUR m)] )"
+            ],
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Publications Count",
+            "expression": [
+              "DISTINCTCOUNT ( fact_revenue[source_id] )"
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Restatement Spread (EUR m)",
+            "expression": [
+              "SUMX (",
+              "    SUMMARIZE ( fact_revenue, fact_revenue[period_key], fact_revenue[segment_key] ),",
+              "    CALCULATE ( MAX ( fact_revenue[revenue_eur_m] ) - MIN ( fact_revenue[revenue_eur_m] ) )",
+              ")"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Reconciliation Status",
+            "expression": [
+              "VAR _d = MAX ( ABS ( [Regions Check Diff (EUR m)] ), ABS ( [Business Lines Check Diff (EUR m)] ) )",
+              "RETURN",
+              "    SWITCH ( TRUE (), ISBLANK ( [G&S Total (EUR m)] ), BLANK (), _d = 0, \"OK\", _d <= 2, \"Rounding\", \"Break\" )"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "fact_bridge",
+        "columns": [
+          {
+            "name": "period_key",
+            "dataType": "string",
+            "sourceColumn": "period_key",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "segment_key",
+            "dataType": "string",
+            "sourceColumn": "segment_key",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "driver",
+            "dataType": "string",
+            "sourceColumn": "driver",
+            "summarizeBy": "none",
+            "sortByColumn": "step_order"
+          },
+          {
+            "name": "amount_eur_m",
+            "dataType": "double",
+            "sourceColumn": "amount_eur_m",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "is_derived",
+            "dataType": "int64",
+            "sourceColumn": "is_derived",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "source_id",
+            "dataType": "string",
+            "sourceColumn": "source_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "note",
+            "dataType": "string",
+            "sourceColumn": "note",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "step_order",
+            "dataType": "int64",
+            "sourceColumn": "step_order",
+            "summarizeBy": "none",
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_bridge",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"fact_bridge.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"period_key\", type text}, {\"segment_key\", type text}, {\"driver\", type text}, {\"amount_eur_m\", type number}, {\"is_derived\", Int64.Type}, {\"source_id\", type text}, {\"note\", type text}, {\"step_order\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Bridge Amount (EUR m)",
+            "expression": [
+              "SUM ( fact_bridge[amount_eur_m] )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Bridge Prior-year Revenue (EUR m)",
+            "expression": [
+              "CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = \"Prior-year revenue\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Bridge Current Revenue (EUR m)",
+            "expression": [
+              "[Bridge Amount (EUR m)]"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Currency Impact (EUR m)",
+            "expression": [
+              "CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = \"Currency\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Energy Impact (EUR m)",
+            "expression": [
+              "CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] IN { \"Natural gas\", \"Electricity\" } )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Scope Impact (EUR m)",
+            "expression": [
+              "CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = \"Significant scope\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Comparable Growth (EUR m)",
+            "expression": [
+              "CALCULATE ( [Bridge Amount (EUR m)], fact_bridge[driver] = \"Comparable growth\" )"
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "Comparable Growth % (recalc)",
+            "expression": [
+              "DIVIDE ( [Comparable Growth (EUR m)], [Bridge Prior-year Revenue (EUR m)] )"
+            ],
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Comparable Gap vs Reported (pts)",
+            "expression": [
+              "( [Comparable Growth % (recalc)] - [Comparable Growth % (as reported)] ) * 100"
+            ],
+            "formatString": "0.00"
+          }
+        ]
+      },
+      {
+        "name": "fact_checks",
+        "columns": [
+          {
+            "name": "check_id",
+            "dataType": "string",
+            "sourceColumn": "check_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "check_type",
+            "dataType": "string",
+            "sourceColumn": "check_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "period_key",
+            "dataType": "string",
+            "sourceColumn": "period_key",
+            "summarizeBy": "none",
+            "isHidden": true
+          },
+          {
+            "name": "scope",
+            "dataType": "string",
+            "sourceColumn": "scope",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "expected",
+            "dataType": "double",
+            "sourceColumn": "expected",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "actual",
+            "dataType": "double",
+            "sourceColumn": "actual",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "unit",
+            "dataType": "string",
+            "sourceColumn": "unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "difference",
+            "dataType": "double",
+            "sourceColumn": "difference",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_checks",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"fact_checks.csv\"), [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"check_id\", type text}, {\"check_type\", type text}, {\"period_key\", type text}, {\"scope\", type text}, {\"expected\", type number}, {\"actual\", type number}, {\"unit\", type text}, {\"difference\", type number}, {\"status\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Checks Total",
+            "expression": [
+              "COUNTROWS ( fact_checks )"
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Checks OK",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( fact_checks ), fact_checks[status] = \"OK\" )"
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Checks Rounding",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( fact_checks ), fact_checks[status] = \"Rounding\" )"
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Checks Break",
+            "expression": [
+              "CALCULATE ( COUNTROWS ( fact_checks ), fact_checks[status] IN { \"Break\", \"Investigate\" } )"
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Check Pass Rate %",
+            "expression": [
+              "DIVIDE ( [Checks OK] + [Checks Rounding], [Checks Total] )"
+            ],
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Max Abs Difference",
+            "expression": [
+              "MAXX ( fact_checks, ABS ( fact_checks[difference] ) )"
+            ],
+            "formatString": "0.00"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "fact_revenue_period_key",
+        "fromTable": "fact_revenue",
+        "fromColumn": "period_key",
+        "toTable": "dim_period",
+        "toColumn": "period_key"
+      },
+      {
+        "name": "fact_revenue_segment_key",
+        "fromTable": "fact_revenue",
+        "fromColumn": "segment_key",
+        "toTable": "dim_segment",
+        "toColumn": "segment_key"
+      },
+      {
+        "name": "fact_revenue_source_id",
+        "fromTable": "fact_revenue",
+        "fromColumn": "source_id",
+        "toTable": "dim_source",
+        "toColumn": "source_id"
+      },
+      {
+        "name": "fact_bridge_period_key",
+        "fromTable": "fact_bridge",
+        "fromColumn": "period_key",
+        "toTable": "dim_period",
+        "toColumn": "period_key"
+      },
+      {
+        "name": "fact_bridge_segment_key",
+        "fromTable": "fact_bridge",
+        "fromColumn": "segment_key",
+        "toTable": "dim_segment",
+        "toColumn": "segment_key"
+      },
+      {
+        "name": "fact_checks_period_key",
+        "fromTable": "fact_checks",
+        "fromColumn": "period_key",
+        "toTable": "dim_period",
+        "toColumn": "period_key"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Regional Controller - Americas",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "dim_segment",
+            "filterExpression": "dim_segment[segment] = \"Americas\""
+          },
+          {
+            "name": "fact_checks",
+            "filterExpression": "fact_checks[scope] = \"Americas\""
+          }
+        ]
+      },
+      {
+        "name": "Regional Controller - EMEA",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "dim_segment",
+            "filterExpression": "dim_segment[segment] = \"EMEA\""
+          },
+          {
+            "name": "fact_checks",
+            "filterExpression": "fact_checks[scope] = \"EMEA\""
+          }
+        ]
+      },
+      {
+        "name": "Regional Controller - Asia Pacific",
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "dim_segment",
+            "filterExpression": "dim_segment[segment] = \"Asia Pacific\""
+          },
+          {
+            "name": "fact_checks",
+            "filterExpression": "fact_checks[scope] = \"Asia Pacific\""
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "kind": "m",
+        "expression": "\"C:\\Users\\waqas\\Documents\\air-liquide-finance-reconciliation\\data\\clean\\\" meta [IsParameterQuery = true, Type = \"Text\", IsParameterQueryRequired = true]"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DataFolder\", \"dim_period\", \"dim_segment\", \"dim_source\", \"fact_revenue\", \"fact_bridge\", \"fact_checks\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}

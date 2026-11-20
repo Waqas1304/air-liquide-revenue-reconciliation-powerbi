@@ -1,0 +1,249 @@
+{
+  "config": "{\"version\": \"5.43\", \"themeCollection\": {}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"linguisticSchemaSyncVersion\": 0, \"settings\": {\"useNewFilterPaneExperience\": true, \"allowChangeFilterTypes\": true, \"useStylableVisualContainerHeader\": true, \"exportDataMode\": 1}, \"objects\": {}}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "p1_bridge",
+      "displayName": "1. Revenue Bridge",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"t1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 10, \"z\": 0, \"width\": 1240, \"height\": 40}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Revenue bridge: from prior-year to current revenue (EUR m) - Air Liquide published data\", \"textStyle\": {\"fontSize\": \"14pt\", \"fontWeight\": \"bold\"}}]}]}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 10,
+          "z": 0,
+          "width": 1240,
+          "height": 40
+        },
+        {
+          "config": "{\"name\": \"sl_period\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 60, \"z\": 0, \"width\": 220, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_period.period\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period\"}, \"Name\": \"dim_period.period\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Period'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 60,
+          "z": 0,
+          "width": 220,
+          "height": 300
+        },
+        {
+          "config": "{\"name\": \"sl_scope\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 370, \"z\": 0, \"width\": 220, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_segment.segment\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"dim_segment\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment\"}, \"Name\": \"dim_segment.segment\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Scope (Group / Gas & Services)'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 370,
+          "z": 0,
+          "width": 220,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"wf\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 260, \"y\": 60, \"z\": 0, \"width\": 680, \"height\": 450}}], \"singleVisual\": {\"visualType\": \"waterfallChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_bridge.driver\"}], \"Y\": [{\"queryRef\": \"fact_bridge.Bridge Amount (EUR m)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"b\", \"Entity\": \"fact_bridge\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"driver\"}, \"Name\": \"fact_bridge.driver\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Bridge Amount (EUR m)\"}, \"Name\": \"fact_bridge.Bridge Amount (EUR m)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prior-year revenue -> drivers -> current revenue'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 260,
+          "y": 60,
+          "z": 0,
+          "width": 680,
+          "height": 450
+        },
+        {
+          "config": "{\"name\": \"k1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 60, \"z\": 0, \"width\": 300, \"height\": 105}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_bridge.Currency Impact (EUR m)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"b\", \"Entity\": \"fact_bridge\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Currency Impact (EUR m)\"}, \"Name\": \"fact_bridge.Currency Impact (EUR m)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Currency impact'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 960,
+          "y": 60,
+          "z": 0,
+          "width": 300,
+          "height": 105
+        },
+        {
+          "config": "{\"name\": \"k2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 175, \"z\": 0, \"width\": 300, \"height\": 105}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_bridge.Energy Impact (EUR m)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"b\", \"Entity\": \"fact_bridge\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Energy Impact (EUR m)\"}, \"Name\": \"fact_bridge.Energy Impact (EUR m)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Energy pass-through'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 960,
+          "y": 175,
+          "z": 0,
+          "width": 300,
+          "height": 105
+        },
+        {
+          "config": "{\"name\": \"k3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 290, \"z\": 0, \"width\": 300, \"height\": 105}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_bridge.Scope Impact (EUR m)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"b\", \"Entity\": \"fact_bridge\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Scope Impact (EUR m)\"}, \"Name\": \"fact_bridge.Scope Impact (EUR m)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Significant scope'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 960,
+          "y": 290,
+          "z": 0,
+          "width": 300,
+          "height": 105
+        },
+        {
+          "config": "{\"name\": \"k4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 960, \"y\": 405, \"z\": 0, \"width\": 300, \"height\": 105}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_bridge.Comparable Growth % (recalc)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"b\", \"Entity\": \"fact_bridge\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Comparable Growth % (recalc)\"}, \"Name\": \"fact_bridge.Comparable Growth % (recalc)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Comparable growth (recalculated)'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 960,
+          "y": 405,
+          "z": 0,
+          "width": 300,
+          "height": 105
+        },
+        {
+          "config": "{\"name\": \"tb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 525, \"z\": 0, \"width\": 1240, \"height\": 180}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_period.period\"}, {\"queryRef\": \"dim_segment.segment\"}, {\"queryRef\": \"fact_bridge.Bridge Prior-year Revenue (EUR m)\"}, {\"queryRef\": \"fact_bridge.Comparable Growth (EUR m)\"}, {\"queryRef\": \"fact_bridge.Comparable Growth % (recalc)\"}, {\"queryRef\": \"fact_revenue.Comparable Growth % (as reported)\"}, {\"queryRef\": \"fact_bridge.Comparable Gap vs Reported (pts)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}, {\"Name\": \"s\", \"Entity\": \"dim_segment\", \"Type\": 0}, {\"Name\": \"b\", \"Entity\": \"fact_bridge\", \"Type\": 0}, {\"Name\": \"r\", \"Entity\": \"fact_revenue\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period\"}, \"Name\": \"dim_period.period\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment\"}, \"Name\": \"dim_segment.segment\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Bridge Prior-year Revenue (EUR m)\"}, \"Name\": \"fact_bridge.Bridge Prior-year Revenue (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Comparable Growth (EUR m)\"}, \"Name\": \"fact_bridge.Comparable Growth (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Comparable Growth % (recalc)\"}, \"Name\": \"fact_bridge.Comparable Growth % (recalc)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Comparable Growth % (as reported)\"}, \"Name\": \"fact_revenue.Comparable Growth % (as reported)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"b\"}}, \"Property\": \"Comparable Gap vs Reported (pts)\"}, \"Name\": \"fact_bridge.Comparable Gap vs Reported (pts)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Check: recalculated comparable growth vs figure printed in the release'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 525,
+          "z": 0,
+          "width": 1240,
+          "height": 180
+        }
+      ],
+      "ordinal": 0
+    },
+    {
+      "name": "p2_recon",
+      "displayName": "2. Reconciliation",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"t2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 10, \"z\": 0, \"width\": 1240, \"height\": 40}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Reconciliation: do the published figures add up, roll up and stay stable across publications?\", \"textStyle\": {\"fontSize\": \"14pt\", \"fontWeight\": \"bold\"}}]}]}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 10,
+          "z": 0,
+          "width": 1240,
+          "height": 40
+        },
+        {
+          "config": "{\"name\": \"c1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 60, \"z\": 0, \"width\": 230, \"height\": 100}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_checks.Checks Total\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Checks Total\"}, \"Name\": \"fact_checks.Checks Total\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Checks run'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 60,
+          "z": 0,
+          "width": 230,
+          "height": 100
+        },
+        {
+          "config": "{\"name\": \"c2\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 260, \"y\": 60, \"z\": 0, \"width\": 230, \"height\": 100}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_checks.Checks OK\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Checks OK\"}, \"Name\": \"fact_checks.Checks OK\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Exact match'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 260,
+          "y": 60,
+          "z": 0,
+          "width": 230,
+          "height": 100
+        },
+        {
+          "config": "{\"name\": \"c3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 500, \"y\": 60, \"z\": 0, \"width\": 230, \"height\": 100}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_checks.Checks Rounding\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Checks Rounding\"}, \"Name\": \"fact_checks.Checks Rounding\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Rounding (<= EUR 2m)'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 500,
+          "y": 60,
+          "z": 0,
+          "width": 230,
+          "height": 100
+        },
+        {
+          "config": "{\"name\": \"c4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 740, \"y\": 60, \"z\": 0, \"width\": 230, \"height\": 100}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_checks.Checks Break\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Checks Break\"}, \"Name\": \"fact_checks.Checks Break\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Breaks to investigate'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 740,
+          "y": 60,
+          "z": 0,
+          "width": 230,
+          "height": 100
+        },
+        {
+          "config": "{\"name\": \"c5\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 980, \"y\": 60, \"z\": 0, \"width\": 280, \"height\": 100}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_checks.Check Pass Rate %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Check Pass Rate %\"}, \"Name\": \"fact_checks.Check Pass Rate %\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Pass rate'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 980,
+          "y": 60,
+          "z": 0,
+          "width": 280,
+          "height": 100
+        },
+        {
+          "config": "{\"name\": \"mx\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 175, \"z\": 0, \"width\": 620, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"pivotTable\", \"projections\": {\"Rows\": [{\"queryRef\": \"fact_checks.check_type\"}], \"Columns\": [{\"queryRef\": \"fact_checks.status\"}], \"Values\": [{\"queryRef\": \"fact_checks.Checks Total\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"check_type\"}, \"Name\": \"fact_checks.check_type\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"status\"}, \"Name\": \"fact_checks.status\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"Checks Total\"}, \"Name\": \"fact_checks.Checks Total\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Results by check type'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 175,
+          "z": 0,
+          "width": 620,
+          "height": 260
+        },
+        {
+          "config": "{\"name\": \"rc\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 660, \"y\": 175, \"z\": 0, \"width\": 600, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_period.period\"}, {\"queryRef\": \"fact_revenue.G&S Total (EUR m)\"}, {\"queryRef\": \"fact_revenue.Sum of Regions (EUR m)\"}, {\"queryRef\": \"fact_revenue.Regions Check Diff (EUR m)\"}, {\"queryRef\": \"fact_revenue.Sum of Business Lines (EUR m)\"}, {\"queryRef\": \"fact_revenue.Business Lines Check Diff (EUR m)\"}, {\"queryRef\": \"fact_revenue.Reconciliation Status\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}, {\"Name\": \"r\", \"Entity\": \"fact_revenue\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period\"}, \"Name\": \"dim_period.period\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"G&S Total (EUR m)\"}, \"Name\": \"fact_revenue.G&S Total (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Sum of Regions (EUR m)\"}, \"Name\": \"fact_revenue.Sum of Regions (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Regions Check Diff (EUR m)\"}, \"Name\": \"fact_revenue.Regions Check Diff (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Sum of Business Lines (EUR m)\"}, \"Name\": \"fact_revenue.Sum of Business Lines (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Business Lines Check Diff (EUR m)\"}, \"Name\": \"fact_revenue.Business Lines Check Diff (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Reconciliation Status\"}, \"Name\": \"fact_revenue.Reconciliation Status\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Live DAX check: segments vs Gas & Services total'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 660,
+          "y": 175,
+          "z": 0,
+          "width": 600,
+          "height": 260
+        },
+        {
+          "config": "{\"name\": \"dt\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 450, \"z\": 0, \"width\": 1240, \"height\": 255}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_checks.check_id\"}, {\"queryRef\": \"fact_checks.check_type\"}, {\"queryRef\": \"dim_period.period\"}, {\"queryRef\": \"fact_checks.scope\"}, {\"queryRef\": \"fact_checks.expected\"}, {\"queryRef\": \"fact_checks.actual\"}, {\"queryRef\": \"fact_checks.difference\"}, {\"queryRef\": \"fact_checks.status\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"c\", \"Entity\": \"fact_checks\", \"Type\": 0}, {\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"check_id\"}, \"Name\": \"fact_checks.check_id\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"check_type\"}, \"Name\": \"fact_checks.check_type\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period\"}, \"Name\": \"dim_period.period\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"scope\"}, \"Name\": \"fact_checks.scope\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"expected\"}, \"Name\": \"fact_checks.expected\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"actual\"}, \"Name\": \"fact_checks.actual\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"difference\"}, \"Name\": \"fact_checks.difference\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"c\"}}, \"Property\": \"status\"}, \"Name\": \"fact_checks.status\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Check log (drill-down)'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 450,
+          "z": 0,
+          "width": 1240,
+          "height": 255
+        }
+      ],
+      "ordinal": 1
+    },
+    {
+      "name": "p3_breakdown",
+      "displayName": "3. Revenue Breakdown",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "filters": "[]",
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"t3\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 10, \"z\": 0, \"width\": 1240, \"height\": 40}}], \"singleVisual\": {\"visualType\": \"textbox\", \"drillFilterOtherVisuals\": true, \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Gas & Services revenue by region and business line (quarterly, EUR m)\", \"textStyle\": {\"fontSize\": \"14pt\", \"fontWeight\": \"bold\"}}]}]}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 10,
+          "z": 0,
+          "width": 1240,
+          "height": 40
+        },
+        {
+          "config": "{\"name\": \"sl_type\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 60, \"z\": 0, \"width\": 220, \"height\": 160}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_segment.segment_type\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"dim_segment\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment_type\"}, \"Name\": \"dim_segment.segment_type\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Segment type'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 60,
+          "z": 0,
+          "width": 220,
+          "height": 160
+        },
+        {
+          "config": "{\"name\": \"sl_ptype\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 230, \"z\": 0, \"width\": 220, \"height\": 160}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_period.period_type\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period_type\"}, \"Name\": \"dim_period.period_type\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Period type'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 230,
+          "z": 0,
+          "width": 220,
+          "height": 160
+        },
+        {
+          "config": "{\"name\": \"col\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 260, \"y\": 60, \"z\": 0, \"width\": 1000, \"height\": 330}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_period.period\"}], \"Series\": [{\"queryRef\": \"dim_segment.segment\"}], \"Y\": [{\"queryRef\": \"fact_revenue.Revenue (EUR m)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}, {\"Name\": \"s\", \"Entity\": \"dim_segment\", \"Type\": 0}, {\"Name\": \"r\", \"Entity\": \"fact_revenue\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period\"}, \"Name\": \"dim_period.period\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment\"}, \"Name\": \"dim_segment.segment\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Revenue (EUR m)\"}, \"Name\": \"fact_revenue.Revenue (EUR m)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Revenue by period and segment'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 260,
+          "y": 60,
+          "z": 0,
+          "width": 1000,
+          "height": 330
+        },
+        {
+          "config": "{\"name\": \"mt\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 405, \"z\": 0, \"width\": 1240, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"pivotTable\", \"projections\": {\"Rows\": [{\"queryRef\": \"dim_segment.segment\"}], \"Columns\": [{\"queryRef\": \"dim_period.period\"}], \"Values\": [{\"queryRef\": \"fact_revenue.Revenue (EUR m)\"}, {\"queryRef\": \"fact_revenue.Published Growth % (recalc)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"dim_segment\", \"Type\": 0}, {\"Name\": \"p\", \"Entity\": \"dim_period\", \"Type\": 0}, {\"Name\": \"r\", \"Entity\": \"fact_revenue\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"segment\"}, \"Name\": \"dim_segment.segment\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"period\"}, \"Name\": \"dim_period.period\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Revenue (EUR m)\"}, \"Name\": \"fact_revenue.Revenue (EUR m)\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"r\"}}, \"Property\": \"Published Growth % (recalc)\"}, \"Name\": \"fact_revenue.Published Growth % (recalc)\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Revenue and published growth (recalculated)'\"}}}}}]}}}",
+          "filters": "[]",
+          "x": 20,
+          "y": 405,
+          "z": 0,
+          "width": 1240,
+          "height": 300
+        }
+      ],
+      "ordinal": 2
+    }
+  ]
+}
